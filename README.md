@@ -1,2 +1,8 @@
-# whatsapp-ai-website-generator-saas
-Production-grade AI SaaS platform that generates and deploys websites through WhatsApp using AI automation, Flask/FastAPI, React, Celery, Redis, Docker, Twilio, Groq AI, and Netlify. Includes live deployment URLs, analytics dashboard, AI editing, and automated website generation workflows.
+# pytest cache directory #
+
+This directory contains data from the pytest's cache plugin,
+which provides the `--lf` and `--ff` options, as well as the `cache` fixture.
+
+**Do not** commit this to version control.
+
+See [the docs](https://docs.pytest.org/en/stable/how-to/cache.html) for more information.
