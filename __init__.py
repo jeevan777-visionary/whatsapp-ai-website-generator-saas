@@ -1,3 +1,3 @@
-from deployment.deployer import deploy_site
+from generator.builder import build_website
 
-__all__ = ["deploy_site"]
+__all__ = ["build_website"]
