@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Template Gallery{% endblock %}
+{% block content %}
+<h1 class="text-3xl font-bold mb-6">Generated Website Gallery</h1>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+  {% for site in sites %}
+  <article class="rounded-xl border border-slate-800 bg-slate-900 p-5">
+    <h3 class="font-semibold text-lg">{{ site.business_name }}</h3>
+    <p class="text-slate-400 text-sm mt-1">Template: {{ site.template_type }}</p>
+    <div class="mt-4 flex gap-2 flex-wrap">
+      <a href="/dashboard/preview/{{ site.request_id }}" class="px-3 py-1.5 rounded bg-indigo-600 text-sm">Preview</a>
+      {% if site.live_url %}
+      <a href="{{ site.live_url }}" target="_blank" class="px-3 py-1.5 rounded bg-emerald-700 text-sm">Live URL</a>
+      {% endif %}
+      <a href="/dashboard/download/{{ site.request_id }}" class="px-3 py-1.5 rounded bg-slate-700 text-sm">Download ZIP</a>
+    </div>
+  </article>
+  {% else %}
+  <p class="text-slate-400">No generated websites yet.</p>
+  {% endfor %}
+</div>
+{% endblock %}

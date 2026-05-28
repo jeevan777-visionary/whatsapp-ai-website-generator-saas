@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}WA AI Generator Admin{% endblock %}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="{{ url_for('dashboard.static', filename='dashboard.css') }}" />
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen">
+  <nav class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-20">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-wrap gap-4 items-center justify-between">
+      <a href="/dashboard/" class="text-xl font-bold text-indigo-300">WA AI Generator</a>
+      <div class="flex gap-4 text-sm">
+        <a href="/dashboard/" class="hover:text-white">Dashboard</a>
+        <a href="/dashboard/gallery" class="hover:text-white">Gallery</a>
+        <a href="/dashboard/deployments" class="hover:text-white">Deployments</a>
+        <a href="/health" class="hover:text-white">Health</a>
+      </div>
+    </div>
+  </nav>
+  <main class="max-w-7xl mx-auto px-4 py-8">
+    {% block content %}{% endblock %}
+  </main>
+  <script src="{{ url_for('dashboard.static', filename='dashboard.js') }}"></script>
+</body>
+</html>

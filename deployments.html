@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Deployment Status{% endblock %}
+{% block content %}
+<h1 class="text-3xl font-bold mb-6">Deployment Status Tracker</h1>
+<div class="space-y-3" id="deployment-list">
+  {% for d in deployments %}
+  <article class="p-4 rounded-lg border border-slate-800 bg-slate-900">
+    <div class="flex justify-between gap-4 flex-wrap">
+      <p class="font-mono text-xs">{{ d.request_id }}</p>
+      <span class="text-sm text-indigo-300">{{ d.phase }}</span>
+    </div>
+    <p class="text-sm text-slate-400 mt-1">{{ d.message }}</p>
+    <div class="mt-2 w-full bg-slate-800 rounded h-2"><div class="bg-cyan-500 h-2 rounded" style="width: {{ d.progress }}%"></div></div>
+    {% if d.live_url %}<a href="{{ d.live_url }}" class="text-emerald-400 text-sm mt-2 inline-block" target="_blank">{{ d.live_url }}</a>{% endif %}
+    {% if d.error %}<p class="text-rose-400 text-sm mt-1">{{ d.error }}</p>{% endif %}
+  </article>
+  {% else %}
+  <p class="text-slate-400">No deployments yet.</p>
+  {% endfor %}
+</div>
+{% endblock %}
