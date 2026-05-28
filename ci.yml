@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Compile check
+        run: python -m compileall .
+      - name: Run tests
+        env:
+          SYNC_TASKS: "true"
+          DATABASE_URL: sqlite:///ci_test.db
+        run: pytest -q
+      - name: Frontend install
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Frontend build
+        working-directory: frontend
+        run: npm install --no-fund --no-audit && npm run build
