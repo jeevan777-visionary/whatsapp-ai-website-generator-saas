@@ -1,2 +1,19 @@
-# Created by pytest automatically.
-*
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.DS_Store
+generated_sites/**
+!generated_sites/.gitkeep
+*.sqlite3
+*.db
+.coverage
+htmlcov/
+dist/
+build/
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env
+*.log
